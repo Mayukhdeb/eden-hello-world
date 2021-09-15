@@ -13,3 +13,23 @@ python3 server.py --use-gpu False --num-workers 4 --logfile logs.log --port 5656
 * ` --port`: port where you want to host the endpoint. Defaults to `5656`
 
 A minimal client example can be found on [client.py](https://github.com/Mayukhdeb/eden-hello-world/blob/master/client.py)
+
+## Running with docker
+
+To build from the `Dockerfile`, run:
+
+```
+nvidia-docker build . --file Dockerfile --tag eden-hello-world
+```
+
+Then to run it *without* GPU access:
+
+```
+docker run  --gpus all -p 5656:5656 --network="host" eden-hello-world --num-workers 4 --port 5656 --logfile logs.log
+```
+
+To run it *with* GPU access:
+
+```
+nvidia-docker run  --gpus all -p 5656:5656 --network="host" eden-hello-world --num-workers 4 --port 5656 --logfile logs.log --use-gpu True
+```
