@@ -1,4 +1,5 @@
 # Hello world with eden 
+[![Docker CI](https://github.com/Mayukhdeb/eden-hello-world/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/Mayukhdeb/eden-hello-world/actions/workflows/docker-ci.yml)
 
 A minimal example of a server running with eden. 
 
