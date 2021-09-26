@@ -1,7 +1,7 @@
 from eden.client import Client
 from eden.datatypes import Image
 
-c = Client(url = 'http://127.0.0.1:5656', username= 'abraham')
+c = Client(url = 'http://localhost:5656', username= 'abraham')
 
 config = {
     'name': 'potato',
