@@ -1,4 +1,5 @@
 __eden_queue__.json
 *.log
 results/
+logs/
 env-eden-hello-world/
