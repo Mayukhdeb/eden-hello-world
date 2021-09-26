@@ -1,14 +1,15 @@
 name: Docker CI
 
+# for now build only new tags
 on:
   push:
-    branches:
-      - 'master'
+    # branches:
+    #   - 'master'
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - 'master'
+  # pull_request:
+  #   branches:
+  #     - 'master'
 
 jobs:
   build:
