@@ -1,4 +1,4 @@
-from eden.block import BaseBlock
+from eden.block import Block
 from eden.hosting import host_block
 
 ## extra import to determine if we need a GPU runtime or a normal one 
@@ -12,7 +12,7 @@ parser.add_argument('-p','--port', help='localhost port', required=False, type= 
 
 args = parser.parse_args()
 
-eden_block = BaseBlock()
+eden_block = Block()
 
 my_args = {
         'name': 'abraham', 
