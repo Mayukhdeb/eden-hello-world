@@ -60,7 +60,7 @@ docker-compose up
 
 ## Demo
 
-Server hosts a minimalistic `BaseBlock` that _takes_ a `name` and a `number`, and _produces_ the same `name` and `number` (and the `device` it ran on).
+Server hosts a minimalistic `Block` that _takes_ a `name` and a `number`, and _produces_ the same `name` and `number` (and the `device` it ran on).
 
 With the server started, as clients we ask the `BaseBlock` to be ran from a client.
 
