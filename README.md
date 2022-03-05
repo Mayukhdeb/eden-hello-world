@@ -4,7 +4,16 @@
 
 A minimal example of a server running with eden.
 
-Server side can be run with
+## Local setup
+It is recommended to use a venv or a conda env when setting up a server.
+
+```bash
+sh setup.sh
+```
+
+## Server
+
+The server can be run with:
 
 ```
 python3 server.py --num-workers 4 --logfile logs.log --port 5656 --use-gpu
@@ -59,27 +68,50 @@ With the server started, as clients we ask the `BaseBlock` to be ran from a clie
 
 Testing with the minimal example [client.py](https://github.com/Mayukhdeb/eden-hello-world/blob/master/client.py):
 
-```
+```bash
 python3 client.py
+```
 
-run response: {'status': {'status': 'queued', 'queue_position': 1}, 'token': 'abraham_1632685209_hsugv6sn'}
-fetch response: {'status': {'status': 'running', 'progress': '__none__'}, 'config': {'name': 'potato', 'number': 2233, 'username': 'abraham'}, 'output': {}}
+Expect an output like:
+```bash
+run response: {'token': 'mwy7co43lb'}
+fetch response: {'status': {'status': 'complete'}, 'config': {'name': 'potato', 'number': 2233, 'username': 'abraham'}, 'output': {'message': 'hello potato', 'number': 2233, 'device': 'cpu'}}
 ```
 
 ### Testing with Curl
 
 Run response with `curl` (gives us a `token`).
 
-```
+```bash
 curl http://localhost:5656/run -X POST -H "Content-Type: application/json" -d '{"name": "potato", "number": 2233, "username": "abraham"}'
+```
 
-{"status":{"status":"queued","queue_position":1},"token":"abraham_1632686232_siuc4w9l"}
+Expect an output like:
+```json
+{"token":"qzk1eceyk6"}
 ```
 
 Fetch response (status/output) with `curl` (by passing the `token`).
 
+```bash
+curl http://localhost:5656/fetch -X POST -H "Content-Type: application/json" -d '{"token": "qzk1eceyk6"}'
 ```
-curl http://localhost:5656/fetch -X POST -H "Content-Type: application/json" -d '{"token": "abraham_1632686232_siuc4w9l"}'
 
-{"status":{"status":"complete"},"config":{"name":"potato","number":2233,"username":"abraham"},"output":{"message":"hello potato","number":2233,"device":"cpu"}
+Expect an output like:
+```json
+{
+  "status": {
+    "status": "complete"
+  },
+  "config": {
+    "name": "potato",
+    "number": 2233,
+    "username": "abraham"
+  },
+  "output": {
+    "message": "hello potato",
+    "number": 2233,
+    "device": "cpu"
+  }
+}
 ```
