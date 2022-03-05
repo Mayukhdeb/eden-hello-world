@@ -1,3 +1,2 @@
-pip install --upgrade pip
-pip install git+https://github.com/abraham-ai/eden.git
+pip install -r requirements.txt
 echo 'setup complete :)'
